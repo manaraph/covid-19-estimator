@@ -18,11 +18,11 @@ const expectedOutput = {
   data: mockData,
   impact: {
     currentlyInfected: 6740,
-    infectionsByRequestedTime: 256120,
+    infectionsByRequestedTime: 3533701120,
   },
   severeImpact: {
     currentlyInfected: 33700,
-    infectionsByRequestedTime: 1280600,
+    infectionsByRequestedTime: 17668505600,
   }
 };
 

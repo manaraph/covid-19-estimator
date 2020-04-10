@@ -15,7 +15,7 @@ const computeInfectionRate = ({ periodType, timeToElapse }) => {
       duration = timeToElapse;
   }
 
-  const infectionRate = 2 * Math.trunc(duration / 3);
+  const infectionRate = 2 ** Math.trunc(duration / 3);
   return infectionRate;
 };
 
