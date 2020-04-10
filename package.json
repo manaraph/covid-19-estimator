@@ -6,6 +6,7 @@
   "private": false,
   "scripts": {
     "lint": "eslint ./src/",
+    "lint:fix": "eslint ./src/ --fix",
     "test": "jest",
     "test:watch": "jest --watch"
   },
