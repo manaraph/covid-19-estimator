@@ -25,8 +25,17 @@ const computeInfectionsByRequestedTime = (data, impactFactor) => {
   const infectionRate = computeInfectionRate(data);
   return currentlyInfected * infectionRate;
 };
+const computeSevereCasesByRequestedTime = (data, impactFactor) => 0.15 * computeInfectionsByRequestedTime(data, impactFactor);
+const computeHospitalBedsByRequestedTime = (data, impactFactor) => {
+  const { totalHospitalBeds } = data;
+  const severeCaseByRequestTime = computeSevereCasesByRequestedTime(data, impactFactor);
+  const availableBeds = 0.35 * totalHospitalBeds;
+  return Math.trunc(availableBeds - severeCaseByRequestTime);
+}
 
 module.exports = {
   computeCurrentlyInfected,
-  computeInfectionsByRequestedTime
+  computeInfectionsByRequestedTime,
+  computeSevereCasesByRequestedTime,
+  computeHospitalBedsByRequestedTime
 };

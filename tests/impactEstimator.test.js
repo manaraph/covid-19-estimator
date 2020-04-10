@@ -19,10 +19,14 @@ const expectedOutput = {
   impact: {
     currentlyInfected: 6740,
     infectionsByRequestedTime: 3533701120,
+    severeCasesByRequestedTime: 530055168,
+    hospitalBedsByRequestedTime: -529571953,
   },
   severeImpact: {
     currentlyInfected: 33700,
     infectionsByRequestedTime: 17668505600,
+    severeCasesByRequestedTime: 2650275840,
+    hospitalBedsByRequestedTime: -2649792625,
   }
 };
 
@@ -47,6 +51,14 @@ describe('Covid-19 impact estimator', () => {
       expect(impact.infectionsByRequestedTime).toEqual(expectedImpact.infectionsByRequestedTime);
     });
 
+    test('Should match the expected impact for severe cases by requested time', () => {
+      expect(impact.severeCasesByRequestedTime).toEqual(expectedImpact.severeCasesByRequestedTime);
+    });
+
+    test('Should match the expected impact for severe cases by requested time', () => {
+      expect(impact.hospitalBedsByRequestedTime).toEqual(expectedImpact.hospitalBedsByRequestedTime);
+    });
+
     // Tests for Severe impacts
     test('Should match the expected severe impact for currently infected', () => {
       expect(severeImpact.currentlyInfected).toEqual(expectedsevereImpact.currentlyInfected);
@@ -54,6 +66,14 @@ describe('Covid-19 impact estimator', () => {
 
     test('Should match the expected severe impact for infections by requested time', () => {
       expect(severeImpact.infectionsByRequestedTime).toEqual(expectedsevereImpact.infectionsByRequestedTime);
+    });
+
+    test('Should match the expected severe impact for severe cases by requested time', () => {
+      expect(severeImpact.severeCasesByRequestedTime).toEqual(expectedsevereImpact.severeCasesByRequestedTime);
+    });
+
+    test('Should match the expected severe impact for severe cases by requested time', () => {
+      expect(severeImpact.hospitalBedsByRequestedTime).toEqual(expectedsevereImpact.hospitalBedsByRequestedTime);
     });
   });
 });
