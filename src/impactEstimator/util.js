@@ -33,12 +33,23 @@ const computeHospitalBedsByRequestedTime = (data, impactFactor) => {
   const { totalHospitalBeds } = data;
   const severeCaseByRequestTime = computeSevereCasesByRequestedTime(data, impactFactor);
   const availableBeds = 0.35 * totalHospitalBeds;
-  return Math.trunc(availableBeds - severeCaseByRequestTime);
+  const hospitalBedsByRequestedTime = Math.trunc(availableBeds - severeCaseByRequestTime);
+  return hospitalBedsByRequestedTime;
 };
+const computeCasesForICUByRequestedTime = (data, impactFactor) => {
+  const casesForICUByRequestedTime = 0.05 * computeInfectionsByRequestedTime(data, impactFactor);
+  return casesForICUByRequestedTime;
+}
+const computeCasesForVentilatorsByRequestedTime = (data, impactFactor) =>  {
+  const casesForVentilatorsByRequestedTime = 0.02 * computeInfectionsByRequestedTime(data, impactFactor);
+  return casesForVentilatorsByRequestedTime;
+}
 
 module.exports = {
   computeCurrentlyInfected,
   computeInfectionsByRequestedTime,
   computeSevereCasesByRequestedTime,
-  computeHospitalBedsByRequestedTime
+  computeHospitalBedsByRequestedTime,
+  computeCasesForICUByRequestedTime,
+  computeCasesForVentilatorsByRequestedTime
 };
