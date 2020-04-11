@@ -16,7 +16,7 @@ const getDuration = (periodType, timeToElapse) => {
   }
 
   return duration;
-}
+};
 const computeInfectionRate = ({ periodType, timeToElapse }) => {
   const duration = getDuration(periodType, timeToElapse);
   const infectionRate = 2 ** Math.trunc(duration / 3);
@@ -43,20 +43,20 @@ const computeHospitalBedsByRequestedTime = (data, impactFactor) => {
 const computeCasesForICUByRequestedTime = (data, impactFactor) => {
   const casesForICUByRequestedTime = 0.05 * computeInfectionsByRequestedTime(data, impactFactor);
   return casesForICUByRequestedTime;
-}
-const computeCasesForVentilatorsByRequestedTime = (data, impactFactor) =>  {
-  const casesForVentilatorsByRequestedTime = 0.02 * computeInfectionsByRequestedTime(data, impactFactor);
+};
+const computeCasesForVentilatorsByRequestedTime = (data, impactFactor) => {
+  const infectionsByRequestedTime = computeInfectionsByRequestedTime(data, impactFactor);
+  const casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
   return casesForVentilatorsByRequestedTime;
-}
+};
 const computeDollarsInFlight = (data, impactFactor) => {
   const { periodType, timeToElapse, region } = data;
   const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = region;
 
   const duration = getDuration(periodType, timeToElapse);
   const infectionsByRequestedTime = computeInfectionsByRequestedTime(data, impactFactor);
-  const dollarsInFlight = infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * duration;
-  return dollarsInFlight;
-}
+  return infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * duration;
+};
 
 module.exports = {
   computeCurrentlyInfected,
@@ -64,5 +64,6 @@ module.exports = {
   computeSevereCasesByRequestedTime,
   computeHospitalBedsByRequestedTime,
   computeCasesForICUByRequestedTime,
-  computeCasesForVentilatorsByRequestedTime
+  computeCasesForVentilatorsByRequestedTime,
+  computeDollarsInFlight
 };

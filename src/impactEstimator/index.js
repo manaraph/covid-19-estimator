@@ -4,7 +4,8 @@ import {
   computeSevereCasesByRequestedTime,
   computeHospitalBedsByRequestedTime,
   computeCasesForICUByRequestedTime,
-  computeCasesForVentilatorsByRequestedTime
+  computeCasesForVentilatorsByRequestedTime,
+  computeDollarsInFlight
 } from './util';
 
 const estimateImpact = (data, impactFactor) => ({
@@ -13,7 +14,8 @@ const estimateImpact = (data, impactFactor) => ({
   severeCasesByRequestedTime: computeSevereCasesByRequestedTime(data, impactFactor),
   hospitalBedsByRequestedTime: computeHospitalBedsByRequestedTime(data, impactFactor),
   casesForICUByRequestedTime: computeCasesForICUByRequestedTime(data, impactFactor),
-  casesForVentilatorsByRequestedTime: computeCasesForVentilatorsByRequestedTime(data, impactFactor)
+  casesForVentilatorsByRequestedTime: computeCasesForVentilatorsByRequestedTime(data, impactFactor),
+  dollarsInFlight: computeDollarsInFlight(data, impactFactor)
 });
 
 export default estimateImpact;
