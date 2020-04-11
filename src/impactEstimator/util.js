@@ -55,8 +55,8 @@ const computeDollarsInFlight = (data, impactFactor) => {
 
   const duration = getDuration(periodType, timeToElapse);
   const infectionsByRequestedTime = computeInfectionsByRequestedTime(data, impactFactor);
-  let dollarsInFlight = (infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD) / duration;
-  dollarsInFlight = Math.trunc(dollarsInFlight);
+  let dollarsInFlight = infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD;
+  dollarsInFlight = Math.trunc(dollarsInFlight / duration);
   return dollarsInFlight;
 };
 
