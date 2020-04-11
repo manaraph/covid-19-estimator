@@ -1,4 +1,4 @@
-const computeInfectionRate = ({ periodType, timeToElapse }) => {
+const getDuration = (periodType, timeToElapse) => {
   let duration = 0;
 
   switch (periodType) {
@@ -15,6 +15,10 @@ const computeInfectionRate = ({ periodType, timeToElapse }) => {
       duration = timeToElapse;
   }
 
+  return duration;
+}
+const computeInfectionRate = ({ periodType, timeToElapse }) => {
+  const duration = getDuration(periodType, timeToElapse);
   const infectionRate = 2 ** Math.trunc(duration / 3);
   return infectionRate;
 };
