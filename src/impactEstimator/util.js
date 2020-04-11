@@ -48,6 +48,15 @@ const computeCasesForVentilatorsByRequestedTime = (data, impactFactor) =>  {
   const casesForVentilatorsByRequestedTime = 0.02 * computeInfectionsByRequestedTime(data, impactFactor);
   return casesForVentilatorsByRequestedTime;
 }
+const computeDollarsInFlight = (data, impactFactor) => {
+  const { periodType, timeToElapse, region } = data;
+  const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = region;
+
+  const duration = getDuration(periodType, timeToElapse);
+  const infectionsByRequestedTime = computeInfectionsByRequestedTime(data, impactFactor);
+  const dollarsInFlight = infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * duration;
+  return dollarsInFlight;
+}
 
 module.exports = {
   computeCurrentlyInfected,
