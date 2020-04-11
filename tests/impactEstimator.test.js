@@ -21,21 +21,24 @@ const expectedOutput = {
     infectionsByRequestedTime: 3533701120,
     severeCasesByRequestedTime: 530055168,
     hospitalBedsByRequestedTime: -529571953,
+    casesForICUByRequestedTime: 176685056,
+    casesForVentilatorsByRequestedTime: 70674022,
+    dollarsInFlight: 216286878
   },
   severeImpact: {
     currentlyInfected: 33700,
     infectionsByRequestedTime: 17668505600,
     severeCasesByRequestedTime: 2650275840,
     hospitalBedsByRequestedTime: -2649792625,
+    casesForICUByRequestedTime: 883425280,
+    casesForVentilatorsByRequestedTime: 353370112,
+    dollarsInFlight: 1081434394
   }
 };
 
 describe('Covid-19 impact estimator', () => {
   describe('Should match expected output', () => {
     const { data, impact, severeImpact} = estimator(mockData);
-    console.log(impact);
-    console.log(severeImpact);
-    
     const { impact: expectedImpact, severeImpact: expectedsevereImpact } = expectedOutput;
 
     test('Should return the correct input data', () => {
@@ -59,6 +62,18 @@ describe('Covid-19 impact estimator', () => {
       expect(impact.hospitalBedsByRequestedTime).toEqual(expectedImpact.hospitalBedsByRequestedTime);
     });
 
+    test('Should match the expected impact for cases for ICU by requested time', () => {
+      expect(impact.casesForICUByRequestedTime).toEqual(expectedImpact.casesForICUByRequestedTime);
+    });
+
+    test('Should match the expected impact for cases for ventilators by requested time', () => {
+      expect(impact.casesForVentilatorsByRequestedTime).toEqual(expectedImpact.casesForVentilatorsByRequestedTime);
+    });
+
+    test('Should match the expected impact for dollars in flight', () => {
+      expect(impact.dollarsInFlight).toEqual(expectedImpact.dollarsInFlight);
+    });
+
     // Tests for Severe impacts
     test('Should match the expected severe impact for currently infected', () => {
       expect(severeImpact.currentlyInfected).toEqual(expectedsevereImpact.currentlyInfected);
@@ -74,6 +89,18 @@ describe('Covid-19 impact estimator', () => {
 
     test('Should match the expected severe impact for severe cases by requested time', () => {
       expect(severeImpact.hospitalBedsByRequestedTime).toEqual(expectedsevereImpact.hospitalBedsByRequestedTime);
+    });
+
+    test('Should match the expected severe impact for cases cases for ICU by requested time', () => {
+      expect(severeImpact.casesForICUByRequestedTime).toEqual(expectedsevereImpact.casesForICUByRequestedTime);
+    });
+
+    test('Should match the expected severe impact for cases for ventilators by requested time', () => {
+      expect(severeImpact.casesForVentilatorsByRequestedTime).toEqual(expectedsevereImpact.casesForVentilatorsByRequestedTime);
+    });
+
+    test('Should match the expected severe impact for dollars in flight', () => {
+      expect(severeImpact.dollarsInFlight).toEqual(expectedsevereImpact.dollarsInFlight);
     });
   });
 });

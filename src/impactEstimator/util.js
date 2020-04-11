@@ -46,7 +46,7 @@ const computeCasesForICUByRequestedTime = (data, impactFactor) => {
 };
 const computeCasesForVentilatorsByRequestedTime = (data, impactFactor) => {
   const infectionsByRequestedTime = computeInfectionsByRequestedTime(data, impactFactor);
-  const casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
+  const casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
   return casesForVentilatorsByRequestedTime;
 };
 const computeDollarsInFlight = (data, impactFactor) => {
@@ -55,7 +55,9 @@ const computeDollarsInFlight = (data, impactFactor) => {
 
   const duration = getDuration(periodType, timeToElapse);
   const infectionsByRequestedTime = computeInfectionsByRequestedTime(data, impactFactor);
-  return infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * duration;
+  let dollarsInFlight = (infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD) / duration;
+  dollarsInFlight = Math.trunc(dollarsInFlight);
+  return dollarsInFlight;
 };
 
 module.exports = {
