@@ -5,12 +5,12 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node dist-server/index.js",
     "lint": "eslint ./src/",
     "lint:fix": "eslint ./src/ --fix",
     "test": "jest",
     "test:watch": "jest --watch",
-    "build": "babel src --out-dir dist/ --copy-files",
+    "build": "babel src --out-dir dist-server/ --copy-files",
     "server": "nodemon --exec babel-node src/index.js"
   },
   "dependencies": {
