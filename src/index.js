@@ -20,7 +20,15 @@ app.use((req, res, next) => {
 });
 
 //Setup estimates Router
-app.use('/api/v1', estimatesRouter );
+app.use('/api/v1/on-covid-19', estimatesRouter );
+
+// Handle undefined routes
+app.use('*', (_req, res) => {
+  res.json({
+    success: false,
+    message: 'Resource not available'
+  });
+});
 
 app.listen(port, () => {
   console.log(`API running on port ${port}`);

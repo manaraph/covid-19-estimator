@@ -2,7 +2,7 @@ import express from "express";
 import { jsonEstimates, xmlEstimates } from "../controllers/estimatesControllers";
 const router = express.Router();
 
-router.post('/on-covid-19', (req, res) => {
+router.post('/', (req, res) => {
   const { body } = req;  
   try {
     const estimates = jsonEstimates(body);
@@ -12,7 +12,7 @@ router.post('/on-covid-19', (req, res) => {
   }
 });
 
-router.post('/on-covid-19/json', (req, res) => {
+router.post('/json', (req, res) => {
   const { body } = req;  
   try {
     const estimates = jsonEstimates(body);
@@ -22,7 +22,7 @@ router.post('/on-covid-19/json', (req, res) => {
   }
 });
 
-router.post('/on-covid-19/xml', (req, res) => {
+router.post('/xml', (req, res) => {
   const { body } = req;  
   try {
     const estimates = xmlEstimates(body);
@@ -33,7 +33,7 @@ router.post('/on-covid-19/xml', (req, res) => {
   }
 });
 
-router.get('/on-covid-19/logs', (req, res) => {
+router.get('/logs', (req, res) => {
   res.status(200).send('Hello World!');
 });
 
