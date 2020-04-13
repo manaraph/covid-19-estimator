@@ -1,4 +1,4 @@
-import covid19ImpactEstimator from "../../src/estimator";
+import covid19ImpactEstimator from "../estimator";
 import { toXML } from 'jstoxml';
 
 const xmlOptions = {

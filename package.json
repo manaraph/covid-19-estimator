@@ -9,7 +9,7 @@
     "lint:fix": "eslint ./src/ --fix",
     "test": "jest",
     "test:watch": "jest --watch",
-    "server": "nodemon --exec babel-node api/index.js"
+    "server": "nodemon --exec babel-node src/index.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
