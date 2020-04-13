@@ -3680,6 +3680,11 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+jstoxml@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/jstoxml/-/jstoxml-1.6.5.tgz#a7a5bf36c60399cb7de1b6089edb2354b97d8c0d"
+  integrity sha512-ozA5AwbLnsm6ft6hHh/raabjwGN7FekIwa42WAFEkF3ZKEeXJLfS6/4GlkbOZglFBfadM75nowCRfhw/ojmd9g==
+
 keyv@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/keyv/-/keyv-3.1.0.tgz#ecc228486f69991e49e9476485a5be1e8fc5c4d9"
