@@ -1,8 +1,9 @@
-import dotenv from "dotenv";
-import path from "path";
-import express from "express";
-import bodyParser from "body-parser";
-import estimatesRouter from "./routes/estimates";
+import dotenv from 'dotenv';
+import path from 'path';
+import express from 'express';
+import bodyParser from 'body-parser';
+import estimatesRouter from './routes/estimates';
+
 dotenv.config({
   path: path.resolve(__dirname, '../.env')
 });
@@ -11,7 +12,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 // app.use(express.json());
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', `${process.env.FRONTEND || 'http://localhost:5000'}`);
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
@@ -19,8 +20,8 @@ app.use((req, res, next) => {
   next();
 });
 
-//Setup estimates Router
-app.use('/api/v1/on-covid-19', estimatesRouter );
+// Setup estimates Router
+app.use('/api/v1/on-covid-19', estimatesRouter);
 
 // Handle undefined routes
 app.use('*', (_req, res) => {
@@ -31,5 +32,6 @@ app.use('*', (_req, res) => {
 });
 
 app.listen(port, () => {
+  // eslint-disable-next-line no-console
   console.log(`API running on port ${port}`);
 });

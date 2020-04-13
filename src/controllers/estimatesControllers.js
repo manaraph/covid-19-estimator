@@ -1,24 +1,20 @@
-import covid19ImpactEstimator from "../estimator";
 import { toXML } from 'jstoxml';
+import covid19ImpactEstimator from '../estimator';
 
 const xmlOptions = {
   header: false,
   indent: '  '
 };
 
-const jsonEstimates = (data) => {
-  return covid19ImpactEstimator(data);
-};
+const jsonEstimates = (data) => covid19ImpactEstimator(data);
 
 const xmlEstimates = (data) => {
-  const jsonEstimates = jsonEstimates(data);
-  const estimates = toXML(jsonEstimates, xmlOptions);
-  console.log(estimates);
+  const jsEstimate = jsonEstimates(data);
+  const estimates = toXML(jsEstimate, xmlOptions);
   return estimates;
 };
 
 module.exports = {
   jsonEstimates,
   xmlEstimates
-}
-
+};

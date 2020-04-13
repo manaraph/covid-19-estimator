@@ -1,11 +1,12 @@
-import express from "express";
-import { jsonEstimates, xmlEstimates } from "../controllers/estimatesControllers";
+import express from 'express';
+import estimatesControllers from '../controllers/estimatesControllers';
+
 const router = express.Router();
 
 router.post('/', (req, res) => {
-  const { body } = req;  
+  const { body } = req;
   try {
-    const estimates = jsonEstimates(body);
+    const estimates = estimatesControllers.jsonEstimates(body);
     res.status(200).send(estimates);
   } catch (error) {
     res.status(500).send(error);
@@ -13,9 +14,9 @@ router.post('/', (req, res) => {
 });
 
 router.post('/json', (req, res) => {
-  const { body } = req;  
+  const { body } = req;
   try {
-    const estimates = jsonEstimates(body);
+    const estimates = estimatesControllers.jsonEstimates(body);
     res.status(200).send(estimates);
   } catch (error) {
     res.status(500).send(error);
@@ -23,10 +24,9 @@ router.post('/json', (req, res) => {
 });
 
 router.post('/xml', (req, res) => {
-  const { body } = req;  
+  const { body } = req;
   try {
-    const estimates = xmlEstimates(body);
-    console.log(estimates);
+    const estimates = estimatesControllers.xmlEstimates(body);
     res.status(200).type('application/xml').send(estimates);
   } catch (error) {
     res.status(500).type('application/xml').send(error);
