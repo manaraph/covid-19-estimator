@@ -40,7 +40,7 @@ router.get('/logs', (req, res) => {
   const filename = sf(path.join(__dirname, '../../db/access.log'));
 
   filename.sliceReverse().on('data', (data) => {
-    resData.push(data.toString()); 
+    resData.push(data.toString());
   }).on('end', () => {
     res.type('text/plain').send(resData.join(''));
   });

@@ -29,6 +29,6 @@ const xmlEstimates = (data) => {
 
 module.exports = {
   jsonEstimates,
-  xmlEstimates,
+  xmlEstimates
   // getAccessLogs
 };
