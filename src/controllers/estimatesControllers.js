@@ -1,5 +1,3 @@
-// import path from 'path';
-// import sf from 'slice-file';
 import { toXML } from 'jstoxml';
 import covid19ImpactEstimator from '../estimator';
 
@@ -16,19 +14,7 @@ const xmlEstimates = (data) => {
   return estimates;
 };
 
-// const getAccessLogs = (req, res) => {
-//   const resData = [];
-//   const filename = sf(path.join(__dirname, '../db/access.log'));
-
-//   filename.sliceReverse().on('data', (data) => {
-//     resData.push(data.toString()); // convert from buffer to human readable
-//   }).on('end', () => {
-//     res.type('text/plain').send(resData.join(''));
-//   });
-// }
-
 module.exports = {
   jsonEstimates,
   xmlEstimates
-  // getAccessLogs
 };
