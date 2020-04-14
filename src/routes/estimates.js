@@ -2,10 +2,11 @@ import path from 'path';
 import sf from 'slice-file';
 import express from 'express';
 import estimatesControllers from '../controllers/estimatesControllers';
+import validation from '../middleware/validator';
 
 const router = express.Router();
 
-router.post('/', (req, res) => {
+router.post('/', validation.estimator, (req, res) => {
   const { body } = req;
   try {
     const estimates = estimatesControllers.jsonEstimates(body);
@@ -15,7 +16,7 @@ router.post('/', (req, res) => {
   }
 });
 
-router.post('/json', (req, res) => {
+router.post('/json', validation.estimator, (req, res) => {
   const { body } = req;
   try {
     const estimates = estimatesControllers.jsonEstimates(body);
@@ -25,7 +26,7 @@ router.post('/json', (req, res) => {
   }
 });
 
-router.post('/xml', (req, res) => {
+router.post('/xml', validation.estimator, (req, res) => {
   const { body } = req;
   try {
     const estimates = estimatesControllers.xmlEstimates(body);
