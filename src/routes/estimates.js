@@ -1,5 +1,6 @@
 import path from 'path';
 import sf from 'slice-file';
+import fs from 'fs';
 import express from 'express';
 import estimatesControllers from '../controllers/estimatesControllers';
 import validation from '../middleware/validator';
