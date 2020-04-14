@@ -15,7 +15,7 @@
       <div class="container form-row">
         <div class="form-group col-md-6">
           <label for="region">Region</label>
-          <select id="region" name="region" class="input-group-text form-control" data-region required>
+          <select id="region" name="region" class="input-group-text form-control" aria-label="Select region" data-region required>
             <option value="Africa" selected>Africa</option>
             <option value="Australia">Australia</option>
             <option value="Asia">Asia</option>
@@ -24,10 +24,9 @@
             <option value="South America">South America</option>
           </select>
         </div>
-        
         <div class="form-group col-md-6">
           <label for="periodType">Period Type</label>
-          <select id="periodType" class="input-group-text form-control" data-period-type>
+          <select id="periodType" class="input-group-text form-control" aria-label="Select Period type" data-period-type>
             <option value="days" selected>days</option>
             <option value="weeks">weeks</option>
             <option value="months">months</option>
@@ -39,26 +38,26 @@
         </div>
         <div class="form-group col-md-6">
           <label for="reportedCases">Reported Cases</label>
-          <input placeholder="reported Cases" id="reportedCases" type="number" name="reportedCases" aria-label="Reported cases" class="form-control" data-reported-cases required>        
+          <input placeholder="reported Cases" aria-label="Reported cases"reportedCases" type="number" name="reportedCases" aria-label="Reported cases" class="form-control" data-reported-cases required>        
         </div>
         <div class="form-group col-md-6">
           <label for="avgAge">Average age</label>
-          <input placeholder="Average age" id="avgAge" type="number" step="0.1" name="avgAge" class="form-control" data-avg-age required>        
+          <input placeholder="Average age" aria-label="Average age" id="avgAge" type="number" step="0.1" name="avgAge" class="form-control" data-avg-age required>        
         </div>
         <div class="form-group col-md-6">
           <label for="avgDailyIncomeInUSD" >Average daily income (in USD) Of Region</label>
-          <input placeholder="Average income in USD" id="avgDailyIncomeInUSD" type="number" step="1" name="avgDailyIncomeInUSD" class="form-control" data-avg-daily-income required>        
+          <input placeholder="Average income in USD" aria-label="Average income in USD" id="avgDailyIncomeInUSD" type="number" step="1" name="avgDailyIncomeInUSD" class="form-control" data-avg-daily-income required>        
         </div>
         <div class="form-group col-md-6">
           <label for="totalHospitalBeds">Total Hospital Beds Of Region</label>
-          <input placeholder="Total hospital bed" id="totalHospitalBeds" type="number" name="totalHospitalBeds" class="form-control" data-total-hospital-beds required>        
+          <input placeholder="Total hospital bed" aria-label="Total hospital bed" id="totalHospitalBeds" type="number" name="totalHospitalBeds" class="form-control" data-total-hospital-beds required>        
         </div>
         <div class="form-group col-md-6">
           <label for="timeToElapse">Time To Elapse (Estimation)</label>
-        <input placeholder="Time to elapse" id="timeToElapse" type="number" name="timeToElapse"  class="form-control" data-time-to-elapse required>
+          <input placeholder="Time to elapse" aria-label="Time to elapse" id="timeToElapse" type="number" name="timeToElapse"  class="form-control" data-time-to-elapse required>
         </div>
         <div class="mx-auto py-2">
-          <button id="ImpactEstimator" type="submit" class="btn btn-primary" onclick="covid19ImpactEstimator()" data-go-estimate>
+          <button id="ImpactEstimator" type="submit" aria-role-description="submit button" class="btn btn-primary" onclick="covid19ImpactEstimator()" data-go-estimate>
             Submit
           </button>
         </div>
