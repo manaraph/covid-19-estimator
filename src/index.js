@@ -33,8 +33,13 @@ morgan.token('response-time-ms', function getResponse(req, res) {
   const time = this['response-time'](req, res, 0) < 10 ? `0${this['response-time'](req, res, 0)}ms` : `${this['response-time'](req, res, 0)}ms`;
   return time;
 });
-app.use(morgan(':date\t\t:method\t\t:url\t\t:status\t\t:response-time-ms', { stream: accessLogStream }));
+app.use(morgan(':date\t\t:url\t\t:status\t\t:response-time-ms', { stream: accessLogStream }));
 
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+  res.type('html').sendFile(path.join(`${__dirname}/public/index.html`));
+});
 // Setup estimates Router
 app.use('/api/v1/on-covid-19', estimatesRouter);
 
