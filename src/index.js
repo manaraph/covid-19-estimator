@@ -22,25 +22,18 @@ app.use((req, res, next) => {
   next();
 });
 
-// if (!fs.existsSync(path.join(__dirname, './db/access.log'))) {
-//   fs.mkdirSync('./db', { recursive: true });
-// }
-// const accessLogStream = fs.createWriteStream(
-//   path.join(__dirname, '../db/access.log'), { flags: 'a+' }
-// );
-
 if (!fs.existsSync(path.join(__dirname, './db/access.log'))) {
-  fs.mkdirSync('./dist/db');
+  fs.mkdirSync('./db', { recursive: true });
 }
-
-const accessLogStream = fs.createWriteStream(path.join(__dirname, './db/access.log'), { flags: 'a+' });
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, '../db/access.log'), { flags: 'a+' }
+);
 
 morgan.token('response-time-ms', function getResponse(req, res) {
   const time = this['response-time'](req, res, 0) < 10 ? `0${this['response-time'](req, res, 0)}ms` : `${this['response-time'](req, res, 0)}ms`;
   return time;
 });
-// app.use(morgan(':date\t\t:url\t\t:status\t\t:response-time-ms', { stream: accessLogStream }));
-app.use(morgan(':method\t:url\t:status\t:response-time-ms', { stream: accessLogStream }));
+app.use(morgan(':date\t\t:method\t\t:url\t\t:status\t\t:response-time-ms', { stream: accessLogStream }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
