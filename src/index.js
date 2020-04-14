@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
 import path from 'path';
+import fs from 'fs';
+import morgan from 'morgan';
 import express from 'express';
 import bodyParser from 'body-parser';
 import estimatesRouter from './routes/estimates';
@@ -19,6 +21,19 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers');
   next();
 });
+
+if (!fs.existsSync(path.join(__dirname, './db/access.log'))) {
+  fs.mkdirSync('./db', {recursive: true}, err => console.log(err));
+}
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, '../db/access.log'), { flags: 'a+' }
+);
+
+morgan.token('response-time-ms', function getResponse(req, res) {
+  const time = this['response-time'](req, res, 0) < 10 ? `0${this['response-time'](req, res, 0)}ms` : `${this['response-time'](req, res, 0)}ms`;
+  return time;
+});
+app.use(morgan(`:date\t\t:method\t\t:url\t\t:status\t\t:response-time-ms`, { stream: accessLogStream }));
 
 // Setup estimates Router
 app.use('/api/v1/on-covid-19', estimatesRouter);
