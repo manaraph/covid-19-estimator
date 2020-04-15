@@ -1,0 +1,29 @@
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  color: #ffffff;
+  font-family: 'Nunito Sans', sans-serif;
+  background: linear-gradient(
+    254.01deg,
+    #1fc3c3 47.68%,
+    rgba(50, 123, 176, 0.919175) 77.72%,
+    rgba(78, 18, 149, 0.9) 109.98%
+  );
+}
+
+* {
+  box-sizing: border-box;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  height: 2.5rem;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
