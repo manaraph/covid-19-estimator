@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 </head>
 <body>
-  <div class="py-3 container">
+  <div class="py-3 pb-5 mb-5 container">
     <h1 class="text-center text-white">COVID-19 impact estimator.</h1>
     <form class="py-3 text-white">
       <div class="container form-row">
@@ -56,7 +56,7 @@
           <label for="timeToElapse">Time To Elapse (Estimation)</label>
           <input placeholder="Time to elapse" aria-label="Time to elapse" id="timeToElapse" type="number" name="timeToElapse"  class="form-control" data-time-to-elapse required>
         </div>
-        <div class="mx-auto py-2">
+        <div class="mx-auto py-3">
           <button id="ImpactEstimator" type="submit" aria-roledescription="submit button" class="btn btn-primary" onclick="covid19ImpactEstimator()" data-go-estimate>
             Submit
           </button>

@@ -8,9 +8,9 @@ body {
   font-family: 'Nunito Sans', sans-serif;
   background: linear-gradient(
     254.01deg,
-    #1fc3c3 47.68%,
-    rgba(50, 123, 176, 0.919175) 77.72%,
-    rgba(78, 18, 149, 0.9) 109.98%
+    #1fc3c3 47.68%,    
+    rgba(50, 123, 176, 0.919) 77.72%,
+    rgba(78, 19, 150, 0.902) 109.98%
   );
 }
 
@@ -19,9 +19,10 @@ body {
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   left: 0;
-  height: 2.5rem;
+  background: #327bb0;
+  /* height: 2.5rem; */
   bottom: 0;
   width: 100%;
   color: white;
